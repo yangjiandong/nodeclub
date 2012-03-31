@@ -4,3 +4,8 @@ node_modules
 public/user_data
 
 .monitor
+
+/.idea
+/.settings
+/.project
+*.iml
