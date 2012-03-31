@@ -9,3 +9,5 @@ public/user_data
 /.settings
 /.project
 *.iml
+nodeclub.sublime-project
+nodeclub.sublime-workspace
