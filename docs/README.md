@@ -2,6 +2,15 @@
 
 ## 2012.04.01
 
+* vim 已设置tab为2个space,jsbeautify后强制为2 space
+
+vim/plugin/jsbeautify.vim
+
+    "let s:opt_indent_size = 1
+    "let s:opt_indent_char = "\t"
+    let s:opt_indent_size = 2
+    let s:opt_indent_char = " "
+
 ## 2012.03.31
 
 * git more remote
@@ -14,7 +23,7 @@ http://f2e.us/wiki/git-remote.html#!/
     --github create repo
     git remote add yang git@github.com:yangjiandong/nodeclub.git
     git push -u yang yang
-   
+
     git remote rename yang yh
     --远程更新
     git pull yh
@@ -33,11 +42,11 @@ https://github.com/ManuelKiessling/NodeBeginnerBook
 
     vim .vimrc # 設定 <leader> 鍵值 (若已經有設好 <leader> 鍵, 此步驟請跳過)
     let mapleader=","
-    use format: 
+    use format:
     ,fo
 
 * vim remove ^M 有效方法
-    
+
 http://www.oualline.com/vim-cook.html
 
     :1,$s/^M//
@@ -45,7 +54,7 @@ http://www.oualline.com/vim-cook.html
 
 * nodebookcode
 
-    npm install formidable 
+    npm install formidable
     p69
 
 

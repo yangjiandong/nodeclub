@@ -11,3 +11,5 @@ public/user_data
 *.iml
 nodeclub.sublime-project
 nodeclub.sublime-workspace
+.externalToolBuilders
+
