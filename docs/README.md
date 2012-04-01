@@ -33,6 +33,15 @@ $ node --debug app.js
 
 通过URL http://127.0.0.1:8080/debug?port=5858 就可以进行调试了。
 
+Node 以上方式结合了node-js-development-mode.js,不是很好,只能看到node-js-development-mode.js,
+不如直接采用sys.debug().另一个方案tracer
+
+```
+$ npm -g install tracer
+var logger = require('tracer').console();
+logger.log('hello');
+```
+
 ## 2012.03.31
 
 * git more remote
