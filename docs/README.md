@@ -4,7 +4,8 @@
 
 * git more remote
 
-    http://f2e.us/wiki/git-remote.html#!/
+http://f2e.us/wiki/git-remote.html#!/
+
     nodeclub,
     git branch yang
     git co yang
@@ -22,7 +23,7 @@
 
 * node.js begin
 
-    https://github.com/ManuelKiessling/NodeBeginnerBook   
+https://github.com/ManuelKiessling/NodeBeginnerBook
 
 * vim jsbeautify
     
@@ -34,7 +35,8 @@
 
 * vim remove ^M 有效方法
     
-    http://www.oualline.com/vim-cook.html
+http://www.oualline.com/vim-cook.html
+
     :1,$s/^M//
     :1,$s/{Ctrl+V}{Ctrl+M}//{Enter}
 
