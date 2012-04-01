@@ -1,5 +1,7 @@
 # nodeclub
 
+## 2012.04.01
+
 ## 2012.03.31
 
 * git more remote
@@ -27,7 +29,8 @@ https://github.com/ManuelKiessling/NodeBeginnerBook
 
 * vim jsbeautify
 
-    .vim/plugin/jsbeautify.vim
+.vim/plugin/jsbeautify.vim
+
     vim .vimrc # 設定 <leader> 鍵值 (若已經有設好 <leader> 鍵, 此步驟請跳過)
     let mapleader=","
     use format: 
