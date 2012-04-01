@@ -42,6 +42,11 @@ var logger = require('tracer').console();
 logger.log('hello');
 ```
 
+* mongodb
+
+Mongodb实战：MapReduce计算更新频率,mongodb.txt
+
+
 ## 2012.03.31
 
 * git more remote

@@ -1,0 +1,80 @@
+Mongodb
+========
+
+2012.04.01
+----------
+
+   1. Mongodb实战：MapReduce计算更新频率
+
+1、我们先向测试集合插入1000条数据：
+for(var i=0;i<1000;i++){
+ var x = Math.floor(Math.random()*10)
+ db.element.insert({id:"element_"+i, name:"频道名字"+i, channelid:'channel_'+x, createtime:Date.parse(new Date("2012-2-2"))})
+}
+这样就插入了1000条创建时间为2012-2-2，并且channelid随机为0-9的文档。
+
+2、我们再向集合插入2000条最新数据
+for(var i=2000;i<4000;i++){
+ var x = Math.floor(Math.random()*10)
+ db.element.insert({id:"element_"+i, name:"频道名字"+i, channelid:'channel_'+x, createtime:Date.parse(new Date())})
+}
+这样就插入了2000条创建时间是当前，并且channelid随机为0-9的文档。
+
+3、执行mapReduce函数
+db.runCommand({
+mapreduce:"element",
+map:function(){
+ emit(this.channelid, {count:1});
+},
+reduce:function(key,emits){
+ var total=0;
+ for(var j=0, n=emits.length;j<n;j++){
+  total += emits[j].count;
+ }
+ return {count:total};
+},
+out:"channelpush",
+query:{createtime:{$gt:Date.parse(new Date())-1000*60*60*24*7}},
+scope:{isnow:new Date()}
+});
+我们根据query这个属性筛选出了最近7天的记录，然后对channelid做统计
+
+4、看下结果吧
+db.channelpush.find()
+
+{ "_id" : "channel_0", "value" : { "count" : 179 } }
+{ "_id" : "channel_1", "value" : { "count" : 194 } }
+{ "_id" : "channel_2", "value" : { "count" : 213 } }
+{ "_id" : "channel_3", "value" : { "count" : 226 } }
+{ "_id" : "channel_4", "value" : { "count" : 179 } }
+{ "_id" : "channel_5", "value" : { "count" : 204 } }
+{ "_id" : "channel_6", "value" : { "count" : 203 } }
+{ "_id" : "channel_7", "value" : { "count" : 230 } }
+{ "_id" : "channel_8", "value" : { "count" : 189 } }
+{ "_id" : "channel_9", "value" : { "count" : 183 } }
+
+最近7天的更新频率就出来拉，如果在 channelpush 集合中没有找到的channelid 我们则认为推送频率为0了
+是不是很简单，相信一些用户关系挖掘，数据统计等利用mapreduce可以省不少力呀~
+
+   2. http://www.phpmoadmin.com/
+
+   http://localhost/moadmin.php
+   只要一个文件，但需要php mongodb支持 http://www.php.net/manual/en/mongo.installation.php#mongo.installation.windows
+   D:\xampp\htdocs\moadmin.php
+   download mongo-latest-php5.3vc6ts,unzip to php/ext
+   Add the following line to your php.ini file:
+   extension=php_mongo.dll
+
+   3. https://code.google.com/p/rock-php/
+
+Listen 3003
+NameVirtualHost localhost:3003
+<VirtualHost localhost:3003>
+     AllowEncodedSlashes On
+     DocumentRoot D:\nosql\tools\rockmongo
+     ServerName wasp.localhost:3002
+     ErrorLog logs/mon.log
+     CustomLog logs/mon.access.log common
+</VirtualHost>
+
+   --END
