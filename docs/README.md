@@ -26,7 +26,7 @@ http://f2e.us/wiki/git-remote.html#!/
 https://github.com/ManuelKiessling/NodeBeginnerBook
 
 * vim jsbeautify
-    
+
     .vim/plugin/jsbeautify.vim
     vim .vimrc # 設定 <leader> 鍵值 (若已經有設好 <leader> 鍵, 此步驟請跳過)
     let mapleader=","
@@ -41,7 +41,7 @@ http://www.oualline.com/vim-cook.html
     :1,$s/{Ctrl+V}{Ctrl+M}//{Enter}
 
 * nodebookcode
-      
+
     npm install formidable 
     p69
 
