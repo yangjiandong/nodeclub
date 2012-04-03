@@ -1,5 +1,29 @@
 # nodeclub
 
+## 2012.04.03
+
+* 参考文档修改文件,save/markdonw.js,csrf.js
+
+node-markdown/lib/markdown.js,allowedTags 添加：
+
+```
+embed  //支持 flash 视频
+table|thead|tbody|tr|td|th|caption  //支持表格
+```
+
+allowedAttributes 添加：
+
+```
+embed:'src|quality|width|height|align|allowScriptAccess|allowFullScreen|mode|type'
+table: 'class'
+```
+
+express/node_modules/connect/lib/middleware/csrf.js 添加：
+
+```javascript
+if (req.body && req.body.user_action === 'upload_image') return next();
+```
+
 ## 2012.04.01
 
 * vim 已设置tab为2个space,jsbeautify后强制为2 space

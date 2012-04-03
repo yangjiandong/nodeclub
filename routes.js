@@ -64,7 +64,7 @@ exports = module.exports = function(app) {
   app.get('/tags/edit', tag.edit_tags);
   app.get('/tag/:name', tag.list_topic);
   app.get('/tag/:name/edit', tag.edit);
-  app.get('/tag/:name/delete', tag.delete);
+  app.get('/tag/:name/delete', tag.deleteo);
   app.post('/tag/add', tag.add);
   app.post('/tag/:name/edit', tag.edit);
   app.post('/tag/collect', tag.collect);
@@ -74,7 +74,7 @@ exports = module.exports = function(app) {
   app.get('/topic/create', topic.create);
   app.get('/topic/:tid', topic.index);
   app.get('/topic/:tid/edit', topic.edit);
-  app.get('/topic/:tid/delete', topic.delete);
+  app.get('/topic/:tid/delete', topic.deleteo);
   app.post('/topic/create', topic.create);
   app.post('/topic/:tid/edit', topic.edit);
   app.post('/topic/collect', topic.collect);
@@ -83,11 +83,11 @@ exports = module.exports = function(app) {
   // reply
   app.post('/:topic_id/reply', reply.add);
   app.post('/:topic_id/reply2', reply.add_reply2);
-  app.post('/reply/:reply_id/delete', reply.delete);
+  app.post('/reply/:reply_id/delete', reply.deleteo);
 
   // upload
   app.post('/upload/image', upload.upload_image);
-  
+
   // tools
   app.get('/site_tools', tools.run_site_tools);
 
@@ -95,6 +95,6 @@ exports = module.exports = function(app) {
   app.get('/about', static.about);
   app.get('/faq', static.faq);
 
-  //rss
+  // rss
   app.get('/rss', rss.index);
 };
