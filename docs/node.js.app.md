@@ -4,4 +4,4 @@
 
 * [tracer](https://github.com/baryon/tracer) A powerful and customizable logging library for node.js
 
-
+* [howtonode.org](https://github.com/creationix/howtonode.org) node.js blog
