@@ -160,22 +160,32 @@ var notJump = ['/active_account', // active page
  */
 
 //var logger = require('tracer').colorConsole();
+function reqSerializer(req) {
+  return {
+    method: req.method,
+    url: req.url,
+    headers: req.headers
+  }
+}
 var Logger =  require('bunyan');
-var logger = new Logger({name: 'hello' /*, ... */});
-var logger2 = new Logger({
-  name: 'helloapi',
+var logger1 = new Logger({name: 'hello' /*, ... */});
+var logger = new Logger({
+  name: 'nodeclub',
+  src:true,
   streams: [
     {
       stream: process.stdout,
       level: 'debug'
+      //path: 'app.log'
     },
     {
-      path: 'hello.log',
-      level: 'trace'
+      path: 'app.log',
+      level: 'error'
     }
   ],
   serializers: {
-    req: Logger.stdSerializers.req,
+    //req: reqSerializer
+    req: Logger.stdSerializers.req
     //res: restify.bunyan.serializers.response,
   }});
 var sys = require('sys');
@@ -183,7 +193,7 @@ exports.login = function(req, res, next) {
   var loginname = sanitize(req.body.name).trim().toLowerCase();
   var pass = sanitize(req.body.pass).trim();
 
-  logger.info('user %s', loginname);
+  logger.info({req: req},'user %s', loginname);
 
   if (!loginname || !pass) {
     return res.render('sign/signin', {
@@ -215,7 +225,7 @@ exports.login = function(req, res, next) {
         // store session cookie
 
         logger.debug("login: %j", user);
-        sys.debug("debug: " + user);
+        //sys.debug("debug: " + user);
 
         gen_session(user, res);
         // check at some page just jump to home page

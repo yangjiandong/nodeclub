@@ -3,6 +3,7 @@
 ## 2012.04.11
 
 * 代码热部署方案,https://github.com/remy/nodemon/
+
 save/nodemon.README.md
 
 ```
@@ -15,6 +16,8 @@ nodemon app.js
 
 ```
 npm install bunyan
+>
+nodemon app.js | node_modules\.bin\bunyan( -o json)
 ```
 
 ## 2012.04.03
