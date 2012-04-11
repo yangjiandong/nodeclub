@@ -159,12 +159,31 @@ var notJump = ['/active_account', // active page
  *          next
  */
 
-var logger = require('tracer').colorConsole();
+//var logger = require('tracer').colorConsole();
+var Logger =  require('bunyan');
+var logger = new Logger({name: 'hello' /*, ... */});
+var logger2 = new Logger({
+  name: 'helloapi',
+  streams: [
+    {
+      stream: process.stdout,
+      level: 'debug'
+    },
+    {
+      path: 'hello.log',
+      level: 'trace'
+    }
+  ],
+  serializers: {
+    req: Logger.stdSerializers.req,
+    //res: restify.bunyan.serializers.response,
+  }});
+var sys = require('sys');
 exports.login = function(req, res, next) {
   var loginname = sanitize(req.body.name).trim().toLowerCase();
   var pass = sanitize(req.body.pass).trim();
 
-  logger.debug('user %s', loginname);
+  logger.info('user %s', loginname);
 
   if (!loginname || !pass) {
     return res.render('sign/signin', {
@@ -196,6 +215,7 @@ exports.login = function(req, res, next) {
         // store session cookie
 
         logger.debug("login: %j", user);
+        sys.debug("debug: " + user);
 
         gen_session(user, res);
         // check at some page just jump to home page

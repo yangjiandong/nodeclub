@@ -1,5 +1,22 @@
 # nodeclub
 
+## 2012.04.11
+
+* 代码热部署方案,https://github.com/remy/nodemon/
+save/nodemon.README.md
+
+```
+npm install nodemon -g
+>
+nodemon app.js
+```
+
+* node.js log 方案,http://blog.nodejs.org/2012/03/28/service-logging-in-json-with-bunyan/
+
+```
+npm install bunyan
+```
+
 ## 2012.04.03
 
 * 参考文档修改文件,save/markdonw.js,csrf.js
